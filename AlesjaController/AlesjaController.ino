@@ -155,6 +155,7 @@ void loop() {
     // input parsing
     if (input_is_active){  // rising edge
       last_time_rising_edge = current_time;
+      on_off_emitted = false;  // reset MODE on off
       if (debug){
         Serial.print("Pause: ");
         Serial.print(time_since_last_edge);
@@ -163,8 +164,6 @@ void loop() {
     } else { // falling edge
       last_time_falling_edge = current_time;
       parse_last_input_length(time_since_last_edge);
-
-      on_off_emitted = false;  // reset MODE on off
 
       if (debug){
         Serial.print(" - Active: ");
